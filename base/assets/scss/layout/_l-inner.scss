@@ -1,0 +1,26 @@
+@use "../foundation" as *;
+
+.l-inner {
+  max-width: $layout-width-inner;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+
+  &--flex {
+    display: flex;
+    gap: 120px;
+  }
+
+  &--left,
+  &--right {
+    width: 50%;
+    position: relative;
+    .btn {
+      top: 0 !important;
+    }
+  }
+  &--left {
+  }
+  &--left {
+  }
+}

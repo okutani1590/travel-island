@@ -1,0 +1,27 @@
+// style.scss
+@use "../scss/foundation"; // foundation全体を読み込む
+
+@use "../scss/component/c-card";
+@use "../scss/component/c-button";
+@use "../scss/component/c-heading";
+@use "../scss/component/c-slider";
+@use "../scss/component/c-ctaarea";
+@use "../scss/component/c-title";
+@use "../scss/component/c-article";
+@use "../scss/component/c-page-header";
+@use "../scss/component/c-modal";
+
+@use "../scss/layout/l-footer";
+@use "../scss/layout/l-header";
+
+@use "../scss/layout/l-inner";
+
+@use "../scss/project/_top";
+@use "../scss/project/_news";
+@use "../scss/project/_archive-plan";
+@use "../scss/project/_archive-column";
+@use "../scss/project/_archive-voice";
+@use "../scss/project/_page-contact";
+@use "../scss/project/_single-plan";
+@use "../scss/project/_single-column";
+@use "../scss/project/_single-voice";

@@ -1,0 +1,71 @@
+@use "variable" as v;
+/* アニメーション対象の初期状態 */
+.js-fade-up,
+.js-trouble-item {
+  opacity: 0;
+}
+
+/* 初期状態の隠し */
+.js-feat-header,
+.js-feat-content,
+.js-feat-img-wrap {
+  opacity: 0;
+}
+
+/* 画像が枠からはみ出さないように設定 */
+.features__image-wrapper {
+  overflow: hidden;
+}
+
+.features__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* GSAPでscaleを動かすので、初期値を設定しておくと安定します */
+  transform: scale(1);
+}
+
+/* JS実行前のチラつき防止 */
+.js-msg-visual,
+.js-msg-item {
+  opacity: 0;
+}
+
+/* 写真の枠からはみ出しを防ぐ */
+.message-visual {
+  overflow: hidden;
+}
+
+.message-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* 写真に柔らかさを出すための調整 */
+  border-radius: 8px;
+}
+
+.js-plan-header,
+.js-plan-card,
+.js-plan-btn {
+  opacity: 0;
+}
+
+/* ホバー時の挙動をCSSで追加（GSAPと組み合わせるとさらにリッチに） */
+.plan__item {
+  transition: transform 0.3s ease;
+}
+
+.plan__item:hover {
+  transform: translateY(-8px); /* ホバー時に少し浮き上がる */
+}
+
+.plan__item img {
+  transition: filter 0.3s ease;
+}
+
+.plan__item:hover img {
+  filter: brightness(1.1); /* 少し明るくしてクリックを誘発 */
+}
+
+/* アイコンはJS側でscale:0にするので、ここではそのままでもOKですが、
+   より厳密にするなら visibility: hidden 等を併用します */

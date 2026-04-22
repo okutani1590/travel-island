@@ -1,0 +1,316 @@
+@use "../foundation" as *;
+.c-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+
+  // モーダルが開いている時のクラス
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); // 背景の透過
+    cursor: pointer;
+  }
+
+  &__content {
+    position: relative;
+    background-color: #fff;
+    width: 90%;
+    max-width: 500px;
+    padding: 60px 40px 40px;
+    border-radius: 12px;
+    z-index: 10;
+  }
+
+  &__title{
+    text-align: center;
+   margin-bottom: 40px;
+  }
+  &__subtitle{
+    font-size: 18px;
+    margin-bottom: 10px;
+   color: $color-primary;
+   display: flex;
+	justify-content: center;
+	align-items: center;
+
+
+  &:before,
+&::after {
+	content: '';
+	width: 2px;
+	height: 20px;
+	background-color: $color-primary;
+  opacity: 0.5;
+}
+
+&::before {
+	margin-right: 30px;
+	transform: rotate(-35deg)
+}
+&::after {
+	margin-left: 20px;
+	transform: rotate(35deg)
+}
+  }
+ &__main-title{
+    font-size: 26px;
+
+   width: fit-content;
+   margin: 0 auto;
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   &::before{
+        display: inline-block;
+        content: "";
+          
+          width: 30px;
+          height: 30px;
+          background :url(../img/common/check-icon.svg) no-repeat center / contain ;
+
+   }
+ }
+
+
+
+&__close-btn{
+      background: none;
+    border: none;
+    font-size: 32px;
+    font-weight: 400;
+    position: absolute;
+    top: 2%;
+    right: 5%;
+}
+}
+
+
+
+
+
+// モーダル内のコンテンツデザイン（Project）
+.p-auth-modal {
+  text-align: center;
+
+  &__title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  &__separator {
+    margin: 20px 0;
+    position: relative;
+    // or の横に線を引くデザイン
+  }
+}
+
+
+
+
+
+
+// --- 変数定義 ---
+$primary-color: #34c3eb; // メインの水色
+$text-dark: #333333;
+$bg-gray: #f8f9fa;
+$border-color: #d1d5db;
+$radius-round: 50px;
+$transition: all 0.3s ease;
+
+// --- Mixin (再利用可能なパーツ) ---
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simple-form {
+.form-item{
+  display: block;
+  margin-bottom: 20px;
+}
+
+  .form-label{
+    margin-bottom: 10px;
+    display: block;
+  }
+  // セレクトボックス
+  .form-select-wrapper {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #666; // 矢印
+      pointer-events: none;
+    }
+
+    .form-select {
+      width: 100%;
+      padding: 15px;
+      background-color: #fff;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      appearance: none;
+      cursor: pointer;
+      &:focus { outline-color: $primary-color; }
+    }
+  }
+
+  // 介助レベル（ボタン選択式）
+  .form-button-group {
+    display: flex;
+    gap: 10px;
+
+    .btn-radio {
+      flex: 1;
+      input {
+        display: none;
+      }
+    }
+
+    &:not(.form-button-group--level) .btn-radio {
+      span {
+        @include flex-center;
+        height: 50px;
+        border: 1px solid $primary-color;
+        border-radius: $radius-round;
+        color: $primary-color;
+        font-size: 0.9rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: $transition;
+        background: #fff;
+      }
+
+      input:checked + span {
+        background-color: $primary-color;
+        color: #fff;
+      }
+    }
+
+    // アイコン付き介助レベル（level-icon_on / off）
+    &--level {
+      .btn-radio {
+        input:checked + .btn-radio__face {
+          background-color: rgba($primary-color, 0.12);
+          border-color: $primary-color;
+          border-width: 2px;
+          box-shadow: 0 0 0 1px rgba($primary-color, 0.25);
+        }
+
+        .btn-radio__face {
+          @include flex-center;
+          flex-direction: column;
+          gap: 8px;
+          min-height: 88px;
+          height: auto;
+          padding: 14px 10px 12px;
+          border: 1px solid $border-color;
+          border-radius: 16px;
+          color: $text-dark;
+          background: #fff;
+          cursor: pointer;
+          transition: $transition;
+        }
+
+        .btn-radio__icons {
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          gap: 6px;
+          line-height: 0;
+
+          img {
+            width: 14px;
+            height: 18px;
+            flex-shrink: 0;
+            display: block;
+          }
+        }
+
+        .btn-radio__label {
+          font-size: 0.85rem;
+          font-weight: bold;
+          line-height: 1.25;
+          text-align: center;
+          color: $text-dark;
+        }
+
+        input:checked + .btn-radio__face .btn-radio__label {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  // 人数入力
+  .form-input-inline {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .form-input-number {
+      width: 80px;
+      padding: 12px;
+      background-color: $bg-gray;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+  }
+
+  // 実行ボタン
+  .form-submit {
+    margin-top: 40px;
+    
+    .btn-submit {
+      width: 100%;
+      padding: 20px;
+      background-color: $primary-color;
+      color: #fff;
+      border: none;
+      border-radius: $radius-round;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+ 
+      transition: $transition;
+
+      &:hover {
+        opacity: 0.8;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+// モバイル対応（横並びボタンを縦または2列に）
+@media (max-width: 480px) {
+  .simple-form .form-button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

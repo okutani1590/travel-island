@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>お問い合わせ｜石川県・能登半島のオリジナル旅行プラン｜トラベル愛ランド</title>
+    <meta name="description" content="石川県・能登半島での旅行のご相談・お問い合わせはこちらから。専門スタッフが親身に対応いたします。" />
+    <link rel="stylesheet" href="./assets/css/style.scss" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <script src="./assets/js/option.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  </head>
+  <body>
+    <header class="l-header">
+      <div class="l-header__inner">
+        <div class="l-header__logo">
+          <a href="/"><img src="./assets/img/common/header-logo.png" alt="トラベルアイランド" /></a>
+        </div>
+
+        <div class="l-header__hamburger-wrap">
+          <button class="l-header__hamburger js-hamburger" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <nav class="l-header__nav js-nav">
+          <ul class="l-header__nav-list">
+            <li><a href="#" class="l-header__nav-link icon-heart">お悩みごと</a></li>
+            <li><a href="#" class="l-header__nav-link icon-check">プラン診断</a></li>
+            <li><a href="#" class="l-header__nav-link icon-leaf">安心の理由</a></li>
+            <li><a href="#" class="l-header__nav-link icon-bag">エピソード</a></li>
+            <li><a href="#" class="l-header__nav-link icon-search">おすすめプラン</a></li>
+            <li><a href="#" class="l-header__nav-link icon-pen">コラム</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="page">
+      <section class="c-page-header">
+        <div class="l-inner">
+          <h1 class="c-page-header__title">お問い合わせ</h1>
+          <nav class="c-page-header__breadcrumb">
+            <span><a href="/">ホーム</a></span>
+            <span>お問い合わせ</span>
+          </nav>
+        </div>
+      </section>
+
+      <section class="p-contact">
+        <div class="l-inner">
+          <div class="p-contact__lead">
+            <p>各種お問い合わせは下記フォームより受け付けております。<br class="pc" />内容確認後、担当より折り返しご連絡いたします。</p>
+            <p class="p-contact__note">送信後、自動配信メールをお送りします。</p>
+          </div>
+
+          <form action="" method="post" class="p-form">
+            <div class="p-form__item">
+              <label class="p-form__label" for="name">
+                お名前
+                <span class="p-form__required">必須</span>
+              </label>
+              <div class="p-form__input-wrap">
+                <input type="text" name="name" id="name" placeholder="山田　太郎" required />
+              </div>
+            </div>
+
+            <div class="p-form__item">
+              <label class="p-form__label" for="kana">
+                フリガナ
+                <span class="p-form__required">必須</span>
+              </label>
+              <div class="p-form__input-wrap">
+                <input type="text" name="kana" id="kana" placeholder="ヤマダ　タロウ" required />
+              </div>
+            </div>
+
+            <div class="p-form__item">
+              <label class="p-form__label" for="tel">
+                お電話番号
+              </label>
+              <div class="p-form__input-wrap">
+                <input type="tel" name="tel" id="tel" placeholder="000-0000-0000" />
+              </div>
+            </div>
+
+            <div class="p-form__item">
+              <label class="p-form__label" for="email">
+                メールアドレス
+                <span class="p-form__required">必須</span>
+              </label>
+              <div class="p-form__input-wrap">
+                <input type="email" name="email" id="email" placeholder="info@example.com" required />
+              </div>
+            </div>
+
+            <div class="p-form__item">
+              <label class="p-form__label" for="level">
+                介助を必要とする方の<br class="pc">介助レベル
+              </label>
+              <div class="p-form__input-wrap">
+                <select name="level" id="level">
+                  <option value="">選択してください</option>
+                  <option value="level1">自立</option>
+                  <option value="level2">要支援1〜2</option>
+                  <option value="level3">要介護1〜2</option>
+                  <option value="level4">要介護3〜5</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="p-form__item">
+              <label class="p-form__label">
+                予定旅行期間
+              </label>
+              <div class="p-form__input-wrap p-form__input-wrap--date">
+                <input type="date" name="date-start" aria-label="開始日" />
+                <span>〜</span>
+                <input type="date" name="date-end" aria-label="終了日" />
+              </div>
+            </div>
+
+            <div class="p-form__item">
+              <label class="p-form__label" for="message">
+                お問い合わせ内容
+                <span class="p-form__required">必須</span>
+              </label>
+              <div class="p-form__input-wrap">
+                <textarea name="message" id="message" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+              </div>
+            </div>
+
+            <div class="p-form__policy">
+              <div class="p-form__policy-box">
+                <p class="p-form__policy-head">個人情報の取扱いについて</p>
+                <p>当社は、「個人情報の保護に関する法律」、「番号法」及び「当社個人情報保護方針」に基づき、個人情報を以下のように取り扱い、保護に努めております。</p>
+                <p class="p-form__policy-head">1. 当社が取得・保有する個人情報</p>
+                <p>当社は、「個人情報の保護に関する法律」、「番号法」及び「当社個人情報保護方針」に基づき、個人情報を以下のように取り扱い、保護に努めております。</p>
+                <p>当社は、「個人情報の保護に関する法律」、「番号法」及び「当社個人情報保護方針」に基づき、個人情報を以下のように取り扱い、保護に努めております。</p>
+                <p>当社は、「個人情報の保護に関する法律」、「番号法」及び「当社個人情報保護方針」に基づき、個人情報を以下のように取り扱い、保護に努めております。</p>
+              </div>
+              <label class="p-form__policy-check">
+                <input type="checkbox" name="policy" required />
+                プライバシーポリシーに同意する
+              </label>
+            </div>
+
+            <div class="p-form__submit">
+              <button type="submit" class="c-button--submit">送信する</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- お問い合わせ　CTA (このページでは非表示か、別の形にするのが一般的ですが、指示通り流用) -->
+      <section class="c-cta">
+        <div class="c-cta__inner">
+          <div class="c-cta__left">
+            <h2 class="c-cta__title">お問い合わせ</h2>
+            <p class="c-cta__text">ご希望を伺いながら、<br class="sp" />専門のスタッフがご提案します。<br class="" />まずはお気軽にご相談ください。</p>
+            <a href="tel:0767-53-7744" class="c-button--tel"><img src="./assets/img/common/tel-text.svg" alt="" /> </a>
+          </div>
+          <div class="c-cta__right">
+            <a href="https://lin.ee/X2gEPfD" target="_blank" class="c-button--line"> <img src="./assets/img/common/line-btn.svg" alt="" /> </a>
+            <a href="#" class="c-button--contact"><img src="./assets/img/common/contact-btn.svg" alt="" /> </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="c-cta-side">
+      <aside>
+        <ul class="c-cta-side__list">
+          <li class="c-cta-side__item c-cta-side__item--line">
+            <a href="https://lin.ee/X2gEPfD" target="_blank">
+              <img src="./assets/img/common/line-icon.svg" alt="" />
+              LINE相談
+            </a>
+          </li>
+        </ul>
+      </aside>
+    </div>
+
+    <footer class="l-footer">
+      <div class="l-footer__inner">
+        <div class="l-footer__img">
+          <img src="./assets/img/common/footer_img.jpg" alt="" />
+        </div>
+        <div class="l-footer__content">
+          <p class="l-footer__logo"><img src="./assets/img/common/header-logo.png" alt="" /></p>
+
+          <div class="l-footer__nav">
+            <ul class="l-footer__nav-list">
+              <li class="l-footer__nav-item"><a href=""> お客様の声 </a></li>
+              <li class="l-footer__nav-item"><a href=""> お問い合わせ </a></li>
+              <li class="l-footer__nav-item"><a href=""> 店舗案内 </a></li>
+              <li class="l-footer__nav-item"><a href=""> おすすめプラン </a></li>
+              <li class="l-footer__nav-item"><a href=""> オーダーメイド旅行 </a></li>
+              <li class="l-footer__nav-item"><a href=""> 来店予約 </a></li>
+              <li class="l-footer__nav-item"><a href=""> コラム </a></li>
+              <li class="l-footer__nav-item"><a href=""> 国内・海外旅行検索 </a></li>
+            </ul>
+
+            <ul class="l-footer__subnav-list">
+              <li class="l-footer__subnav-item"><a href=""> お知らせ </a></li>
+              <li class="l-footer__subnav-item"><a href=""> よくあるご質問 </a></li>
+              <li class="l-footer__subnav-item"><a href=""> 会社案内 </a></li>
+            </ul>
+          </div>
+
+          <div class="l-footer__access">
+            <p>
+              トラベル愛ランド株式会社<br />〒926-0811 石川県七尾市御祓町1番地 パトリア1階<br />
+              <a href="tel:0767-53-7744"> TEL: 0767-53-7744 </a>
+            </p>
+            <a href="https://maps.app.goo.gl/8zB4VtnX8BrBKz6S8" target="_blank" class="l-footer__map"> Google Map </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="./assets/js/animation.js" defer></script>
+  </body>
+</html>

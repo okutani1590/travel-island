@@ -1,0 +1,74 @@
+@use "../foundation" as *;
+
+// 共通ページヘッダー（FV）
+.c-page-header {
+background: rgba(44, 188, 224, 10);
+background: linear-gradient(125deg, rgba(44, 188, 224, 0.8) 0%, rgba(240, 234, 169, 0.8) 100%);
+  padding: 180px 0 80px;
+  text-align: center;
+
+  @include mq(sp) {
+    padding: 40px 0 60px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: bold;
+    color: $color-white;
+    margin-bottom: 20px;
+
+    @include mq(sp) {
+      font-size: 24px;
+    }
+  }
+
+  &__breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: $color-white;
+    
+
+    a {
+      color: inherit;
+      text-decoration: none;
+          color: $color-white;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    span {
+            color: $color-white;
+      &::after {
+        content: "/";
+        margin-left: 10px;
+      }
+      &:last-child::after {
+        display: none;
+      }
+    }
+  }
+
+
+
+
+}
+
+  .single{
+.c-page-header {
+padding-top: 120px;
+  padding-bottom: 40px;
+  &__breadcrumb{
+     display: flex;
+    justify-content: left;
+    align-items: left;
+    gap: 10px;
+    font-size: 14px;
+    color: $color-white;
+    
+  }
+  }
+  }

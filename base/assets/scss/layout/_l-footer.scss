@@ -1,0 +1,130 @@
+@use "../foundation" as *;
+
+.l-footer {
+  &__inner {
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    @include mq(sp) {
+      flex-direction: column-reverse;
+      row-gap: 60px;
+    }
+  }
+
+  &__img {
+    width: 40%;
+    @include mq(sp) {
+      width: 100%;
+    }
+  }
+  &__content {
+    width: 60%;
+    padding: 80px 100px 0;
+    text-align: left;
+    @include mq(sp) {
+      width: 100%;
+      padding: 60px 25px 0;
+    }
+  }
+
+  &__logo {
+    max-width: 340px;
+    margin-bottom: 40px;
+  }
+
+  &__access {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @include mq(sp) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  &__map {
+    font-size: 14px;
+    padding: 2px 20px;
+    background-color: $color-primary;
+    display: block;
+    color: $color-white;
+    border-radius: 50px;
+    text-align: center;
+    @include mq(sp) {
+      padding: 20px;
+      width: 100%;
+      font-size: 16px;
+    }
+  }
+
+  &__nav {
+    max-width: 700px;
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px 20px;
+      flex-wrap: wrap;
+      margin-block: 80px;
+      @include mq(sp) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 20px;
+        margin-block: 60px;
+      }
+    }
+    &-item {
+      a {
+        display: block;
+        position: relative;
+        padding-left: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 1.4;
+        @include mq(sp) {
+          font-size: 15px;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 0;
+          width: 4px;
+          height: 70%;
+          background-color: $color-primary;
+        }
+      }
+    }
+  }
+  &__subnav-list {
+    display: flex;
+    @include mq(sp) {
+      flex-direction: column;
+    }
+  }
+  &__subnav-item {
+    margin-bottom: 40px;
+    @include mq(sp) {
+      margin-bottom: 0px;
+    }
+    &:not(:last-child) {
+      border-right: 1px solid #d9d9d9;
+      margin-right: 30px;
+      padding-right: 30px;
+      @include mq(sp) {
+        margin-right: 0px;
+        padding-right: 0px;
+        border-right: none;
+        border-bottom: 1px solid #d9d9d9;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+      }
+    }
+    a {
+      font-size: 18px;
+      font-weight: 500;
+      @include mq(sp) {
+        font-size: 14px;
+      }
+    }
+  }
+}
