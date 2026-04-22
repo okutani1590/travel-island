@@ -1,0 +1,96 @@
+@use "../foundation" as *;
+
+// お客様の声詳細ページ
+.p-single-voice {
+  padding: 80px 0 100px;
+
+  @include mq(sp) {
+    padding: 40px 0 60px;
+  }
+
+  &__main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #888;
+  }
+
+  &__name {
+      font-weight: bold;
+      color: #2cbce0;
+  }
+
+  &__tags {
+      display: flex;
+      gap: 10px;
+  }
+
+  &__tag {
+      background-color: #e0f7fa;
+      color: #00acc1;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    line-height: 1.4;
+
+    @include mq(sp) {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__eyecatch {
+    margin-bottom: 50px;
+    border-radius: 12px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+// 関連するお客様の声
+.p-related-voices {
+  padding: 100px 0;
+  background-color: #f3fbfd;
+
+  &__title-wrap {
+      text-align: center;
+      margin-bottom: 60px;
+  }
+
+  &__title {
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      
+      i {
+          width: 24px;
+          height: 24px;
+          img {
+              width: 100%;
+              height: 100%;
+          }
+      }
+  }
+}

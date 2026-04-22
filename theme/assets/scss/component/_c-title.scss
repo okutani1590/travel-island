@@ -1,0 +1,45 @@
+@use "../foundation" as *;
+
+.c-sec-header {
+  text-align: center;
+  &--left {
+    text-align: left;
+    .c-sec-header__subtitle {
+      justify-content: flex-start;
+    }
+  }
+  &__title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 50px;
+
+    @include mq(sp) {
+      font-size: 24px;
+    }
+
+    &--flex {
+      display: flex;
+      i {
+        margin-top: 5px;
+        margin-right: 10px;
+        display: block;
+        line-height: 1;
+      }
+    }
+  }
+  &__subtitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    color: $color-primary;
+    i {
+      margin-top: 3px;
+      margin-right: 10px;
+      display: block;
+      line-height: 1;
+    }
+  }
+}

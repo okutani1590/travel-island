@@ -1,0 +1,284 @@
+@use "../foundation" as *;
+
+// コラム詳細ページ
+.p-single-column {
+  padding: 80px 0 100px;
+
+  @include mq(sp) {
+    padding: 40px 0 60px;
+  }
+
+  &__inner {
+    display: flex;
+    gap: 60px;
+
+    @include mq(tab) {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  &__main {
+    flex-grow: 1;
+    min-width: 0; // 防止 flex 子元素溢出
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    line-height: 1.4;
+
+    @include mq(sp) {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__eyecatch {
+    margin-bottom: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+// 記事本文（タイポグラフィ）
+.p-entry-content {
+  line-height: 1.8;
+  font-size: 16px;
+  color: #333;
+
+  @include mq(sp) {
+    font-size: 15px;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #2cbce0;
+    color: $color-white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    margin: 60px 0 30px;
+
+    @include mq(sp) {
+      font-size: 20px;
+      padding: 12px 20px;
+      margin: 40px 0 20px;
+    }
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    border-left: 5px solid #2cbce0;
+    padding-left: 15px;
+    margin: 40px 0 20px;
+
+    @include mq(sp) {
+      font-size: 18px;
+      margin: 30px 0 15px;
+    }
+  }
+
+  p {
+    margin-bottom: 1.5em;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1.5em;
+    border-radius: 8px;
+  }
+
+  ul, ol {
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+
+    li {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  blockquote {
+    background-color: #f9fafb;
+    border-left: 4px solid #eee;
+    padding: 20px 30px;
+    margin-bottom: 1.5em;
+    font-style: italic;
+    color: #666;
+  }
+
+  a {
+    color: #2cbce0;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+// 目次 (TOC)
+.p-toc {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 50px;
+
+  @include mq(sp) {
+    padding: 20px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__toggle {
+      font-size: 14px;
+      color: #888;
+      cursor: pointer;
+  }
+
+  &__list {
+    list-style-type: none;
+    padding-left: 0;
+
+    &--sub {
+        padding-left: 1.5em;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 8px;
+
+    &--parent {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-weight: 500;
+        
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background-color: #2cbce0;
+            color: $color-white;
+            border-radius: 50%;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+    }
+
+    &--child {
+        font-size: 14px;
+        color: #666;
+        
+        &::before {
+            content: "└";
+            margin-right: 5px;
+            color: #ccc;
+        }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: #2cbce0;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// 記事ナビ
+.p-entry-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid #eee;
+
+  @include mq(sp) {
+    margin-top: 50px;
+    padding-top: 30px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2cbce0;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #2cbce0;
+    border-radius: 50px;
+    transition: all 0.3s;
+
+    @include mq(sp) {
+      padding: 8px 15px;
+      font-size: 13px;
+    }
+
+    &:hover {
+      background-color: #2cbce0;
+      color: $color-white;
+    }
+
+    &--prev::before {
+      content: "‹";
+      font-size: 20px;
+    }
+
+    &--next::after {
+      content: "›";
+      font-size: 20px;
+    }
+
+    &--list {
+        background-color: #eee;
+        border-color: #eee;
+        color: #333;
+        
+        &:hover {
+            background-color: #ddd;
+            border-color: #ddd;
+            color: #333;
+        }
+    }
+  }
+}

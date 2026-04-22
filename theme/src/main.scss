@@ -1,0 +1,25 @@
+@use "../assets/scss/foundation";
+
+@use "../assets/scss/component/c-card";
+@use "../assets/scss/component/c-button";
+@use "../assets/scss/component/c-heading";
+@use "../assets/scss/component/c-slider";
+@use "../assets/scss/component/c-ctaarea";
+@use "../assets/scss/component/c-title";
+@use "../assets/scss/component/c-article";
+@use "../assets/scss/component/c-page-header";
+@use "../assets/scss/component/c-modal";
+
+@use "../assets/scss/layout/l-footer";
+@use "../assets/scss/layout/l-header";
+@use "../assets/scss/layout/l-inner";
+
+@use "../assets/scss/project/_top";
+@use "../assets/scss/project/_news";
+@use "../assets/scss/project/_archive-plan";
+@use "../assets/scss/project/_archive-column";
+@use "../assets/scss/project/_archive-voice";
+@use "../assets/scss/project/_page-contact";
+@use "../assets/scss/project/_single-plan";
+@use "../assets/scss/project/_single-column";
+@use "../assets/scss/project/_single-voice";

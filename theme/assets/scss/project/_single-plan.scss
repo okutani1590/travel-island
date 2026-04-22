@@ -1,0 +1,418 @@
+@use "../foundation" as *;
+
+// プラン詳細ページ
+.p-single-plan {
+  padding: 80px 0 100px;
+
+  @include mq(sp) {
+    padding: 40px 0 60px;
+  }
+}
+
+// ヒーロー情報
+.p-plan-hero {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 80px;
+
+  @include mq(tab) {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__image {
+    width: 45%;
+    height: fit-content;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    border-radius: 15px;
+    overflow: hidden;
+
+    @include mq(tab) {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.4;
+
+    @include mq(sp) {
+      font-size: 22px;
+    }
+  }
+  ul{
+       display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  &__badges {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  &__tags {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background-color: #ECB100;
+    font-size: 14px;
+    font-weight: bold;
+color: $color-white;
+    i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        background-color: #2cbce0;
+        border-radius: 50%;
+        color: $color-white;
+        font-size: 12px;
+        font-style: normal;
+    }
+  }
+
+  &__info-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #eee;
+    &:not(:first-child) {
+      border-top: none;
+    }
+  
+  }
+
+  &__info-item {
+    display: flex;
+    padding: 15px 0;
+       &:not(:last-child) {
+    border-bottom: 1px solid #eee;
+    }
+    font-size: 15px;
+
+    @include mq(sp) {
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    dt {
+      width: 120px;
+      margin-right: 30px;
+      flex-shrink: 0;
+font-weight: 600;
+
+      @include mq(sp) {
+        width: 100%;
+      }
+    }
+
+    dd {
+      flex-grow: 1;
+      line-height: 1.6;
+    }
+  }
+}
+
+// モデルプラン
+.p-model-plan {
+  margin-bottom: 100px;
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &::before {
+      content: "";
+      width: 4px;
+      height: 24px;
+      background-color: $color-primary;
+    }
+  }
+
+  &__day {
+    margin-bottom: 60px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+  }
+
+  &__day-label {
+    display: inline-block;
+    padding: 4px 15px;
+    background-color: $color-primary;
+    color: $color-white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-bottom: 25px;
+  }
+
+  &__timeline {
+    position: relative;
+    padding-left: 40px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 7px;
+      width: 2px;
+      background-color: #eee;
+    }
+  }
+
+  &__node {
+    position: relative;
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: -37px;
+      width: 12px;
+      height: 12px;
+      background-color: $color-white;
+      border: 2px solid $color-primary;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    &--transport {
+      &::before {
+        display: none;
+      }
+
+      .p-model-plan__time {
+          color: #2cbce0;
+          font-weight: bold;
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 10px;
+          
+          &::before {
+              content: "▼";
+              font-size: 10px;
+          }
+      }
+    }
+  }
+
+  &__time {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+  }
+
+  &__spot {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__desc {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+  }
+}
+
+// FAQ
+.p-faq {
+  padding: 100px 0;
+  background-color: #f9fafb;
+
+  &__inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__title-wrap {
+      text-align: center;
+      margin-bottom: 50px;
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__subtitle {
+      color: #2cbce0;
+      font-size: 14px;
+      font-weight: bold;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__item {
+    background-color: $color-white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 30px;
+    text-align: left;
+    font-weight: bold;
+    cursor: pointer;
+
+    @include mq(sp) {
+      padding: 15px 20px;
+    }
+
+    i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background-color: #2cbce0;
+        color: $color-white;
+        border-radius: 50%;
+        font-style: normal;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+
+    &::after {
+      content: "+";
+      font-size: 20px;
+      color: #2cbce0;
+      transition: transform 0.3s;
+    }
+
+    &.js-active {
+        &::after {
+            content: "-";
+        }
+    }
+  }
+
+  &__answer {
+    padding: 0 30px 20px 75px;
+    font-size: 15px;
+    line-height: 1.8;
+    display: none;
+
+    @include mq(sp) {
+      padding: 0 20px 15px 65px;
+    }
+  }
+}
+
+// 関連プラン
+.p-related-plans {
+  padding: 100px 0;
+
+  &__title-wrap {
+      text-align: center;
+      margin-bottom: 60px;
+  }
+
+  &__title {
+      font-size: 24px;
+      font-weight: bold;
+  }
+}
+
+// 中間のCTA (3つ並び)
+.p-plan-cta {
+    padding: 80px 0;
+    background: linear-gradient(to right, #2cbce0, #c8eef7);
+    
+    &__inner {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        
+        @include mq(tab) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    
+    &__item {
+        width: 100%;
+        max-width: 320px;
+        background: $color-white;
+        border-radius: 10px;
+        padding: 30px 20px;
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s;
+        
+        &:hover {
+            transform: translateY(-5px);
+        }
+        
+        i {
+            font-size: 32px;
+            color: #f7b52c;
+            margin-bottom: 10px;
+        }
+        
+        span {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2cbce0;
+        }
+        
+        p {
+            font-size: 13px;
+            color: #888;
+        }
+    }
+}

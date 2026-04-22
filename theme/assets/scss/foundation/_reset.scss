@@ -1,0 +1,17 @@
+// 最低限のリセット
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #23393c;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+ul {
+  list-style: none;
+}

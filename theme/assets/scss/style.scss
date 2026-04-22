@@ -1,0 +1,26 @@
+// style.scss
+@use "foundation";
+
+@use "component/c-card";
+@use "component/c-button";
+@use "component/c-heading";
+@use "component/c-slider";
+@use "component/c-ctaarea";
+@use "component/c-title";
+@use "component/c-article";
+@use "component/c-page-header";
+@use "component/c-modal";
+
+@use "layout/l-footer";
+@use "layout/l-header";
+@use "layout/l-inner";
+
+@use "project/_top";
+@use "project/_news";
+@use "project/_archive-plan";
+@use "project/_archive-column";
+@use "project/_archive-voice";
+@use "project/_page-contact";
+@use "project/_single-plan";
+@use "project/_single-column";
+@use "project/_single-voice";

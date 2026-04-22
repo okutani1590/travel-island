@@ -1,0 +1,17 @@
+@use "../foundation" as *;
+// component/_heading.scss
+.c-heading {
+  font-weight: bold;
+  line-height: 1.5;
+
+  &--lg {
+    // Modifier: 大きい見出し
+    font-size: 2rem;
+    border-bottom: 2px solid var(--color-primary);
+  }
+
+  &--md {
+    // Modifier: 中くらい
+    font-size: 1.5rem;
+  }
+}
