@@ -81,3 +81,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// スムーススクロール
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('a[href*="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      const hashIndex = href.indexOf("#");
+      const hash = href.slice(hashIndex);
+      const path = href.slice(0, hashIndex);
+
+      // 別ページへのリンクは通常遷移
+      if (path && path !== window.location.pathname && path !== window.location.href) return;
+
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      e.preventDefault();
+
+      const headerHeight = document.querySelector(".l-header")?.offsetHeight ?? 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+      window.scrollTo({ top, behavior: "smooth" });
+    });
+  });
+});

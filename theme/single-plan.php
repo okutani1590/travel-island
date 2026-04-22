@@ -29,7 +29,9 @@
       <div class="p-plan-hero">
         <div class="p-plan-hero__image">
           <?php if ( has_post_thumbnail() ) : ?>
-            <?php the_post_thumbnail( 'large', [ 'alt' => get_the_title() ] ); ?>
+            <?php the_post_thumbnail( 'full', [ 'alt' => get_the_title() ] ); ?>
+          <?php else : ?>
+            <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/common/noimage.jpg" alt="" />
           <?php endif; ?>
         </div>
         <div class="p-plan-hero__content">

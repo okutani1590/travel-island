@@ -137,6 +137,22 @@ function travel_island_register_cpts() {
 }
 add_action( 'init', 'travel_island_register_cpts' );
 
+function travel_island_get_popular_column_ids( int $limit = 3 ): array {
+    global $wpdb;
+    $results = $wpdb->get_col( $wpdb->prepare(
+        "SELECT v.id
+         FROM {$wpdb->prefix}post_views v
+         INNER JOIN {$wpdb->posts} p ON p.ID = v.id
+         WHERE p.post_type = 'column'
+           AND p.post_status = 'publish'
+           AND v.period = 0
+         ORDER BY v.count DESC
+         LIMIT %d",
+        $limit
+    ) );
+    return array_map( 'intval', (array) $results );
+}
+
 function travel_island_get_level_icons( int $level ): string {
     $dir  = get_template_directory_uri() . '/assets/img/common/';
     $html = '';

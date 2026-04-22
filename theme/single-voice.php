@@ -35,11 +35,13 @@
 
         <h1 class="p-single-voice__title"><?php the_title(); ?></h1>
 
-        <?php if ( has_post_thumbnail() ) : ?>
         <div class="p-single-voice__eyecatch">
-          <?php the_post_thumbnail( 'large', [ 'alt' => 'お客様の声' ] ); ?>
+          <?php if ( has_post_thumbnail() ) : ?>
+            <?php the_post_thumbnail( 'full', [ 'alt' => 'お客様の声' ] ); ?>
+          <?php else : ?>
+            <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/common/noimage.jpg" alt="" />
+          <?php endif; ?>
         </div>
-        <?php endif; ?>
 
         <div class="p-entry-content">
           <?php the_content(); ?>
@@ -85,7 +87,11 @@
         <li class="p-card-list__item">
           <a href="<?php the_permalink(); ?>" class="c-card">
             <figure class="c-card__image-wrapper">
-              <?php the_post_thumbnail( 'medium', [ 'alt' => '', 'loading' => 'lazy' ] ); ?>
+              <?php if ( has_post_thumbnail() ) : ?>
+                <?php the_post_thumbnail( 'full', [ 'alt' => '', 'loading' => 'lazy' ] ); ?>
+              <?php else : ?>
+                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/common/noimage.jpg" alt="" loading="lazy" />
+              <?php endif; ?>
             </figure>
             <div class="c-card__body">
               <div class="c-card__meta">

@@ -24,7 +24,9 @@
           <a href="<?php the_permalink(); ?>" class="c-card">
             <figure class="c-card__image-wrapper">
               <?php if ( has_post_thumbnail() ) : ?>
-                <?php the_post_thumbnail( 'medium', [ 'loading' => 'lazy', 'decoding' => 'async', 'alt' => '' ] ); ?>
+                <?php the_post_thumbnail( 'full', [ 'loading' => 'lazy', 'decoding' => 'async', 'alt' => '' ] ); ?>
+              <?php else : ?>
+                <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/common/noimage.jpg" alt="" loading="lazy" decoding="async" />
               <?php endif; ?>
             </figure>
             <div class="c-card__body">

@@ -25,7 +25,9 @@
             <a href="<?php the_permalink(); ?>" class="c-card">
               <figure class="c-card__image-wrapper">
                 <?php if ( has_post_thumbnail() ) : ?>
-                  <?php the_post_thumbnail( 'medium', [ 'loading' => 'lazy', 'decoding' => 'async', 'alt' => '' ] ); ?>
+                  <?php the_post_thumbnail( 'full', [ 'loading' => 'lazy', 'decoding' => 'async', 'alt' => '' ] ); ?>
+                <?php else : ?>
+                  <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/common/noimage.jpg" alt="" loading="lazy" decoding="async" />
                 <?php endif; ?>
               </figure>
               <div class="c-card__body">
@@ -58,35 +60,7 @@
       </div>
 
       <!-- サイドバー -->
-      <aside class="p-archive-column__side p-sidebar">
-        <div class="p-sidebar__section">
-          <h2 class="p-sidebar__title">カテゴリー</h2>
-          <nav class="p-sidebar-category">
-            <?php
-            $col_cats = get_terms( [ 'taxonomy' => 'column_category', 'hide_empty' => false ] );
-            $color_map = [ 'お知らせ' => 'red', 'キャンペーン' => 'orange', '取り組み' => 'green', 'お役立ち情報' => 'blue' ];
-            $icon_map  = [
-                'お知らせ'      => 'news-icon.svg',
-                'キャンペーン'  => 'campaign-icon.svg',
-                '取り組み'      => 'attempt-icon.svg',
-                'お役立ち情報'  => 'info-icon-white.svg',
-            ];
-            if ( ! is_wp_error( $col_cats ) ) :
-                foreach ( $col_cats as $cat ) :
-                    $color = $color_map[ $cat->name ] ?? 'blue';
-                    $icon  = $icon_map[ $cat->name ] ?? 'info-icon-white.svg';
-            ?>
-            <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" class="p-sidebar-category__btn p-sidebar-category__btn--<?php echo esc_attr( $color ); ?>">
-              <i><img src="<?php echo esc_url( $dir ); ?>/assets/img/common/<?php echo esc_attr( $icon ); ?>" alt="" /></i>
-              <span><?php echo esc_html( $cat->name ); ?></span>
-            </a>
-            <?php
-                endforeach;
-            endif;
-            ?>
-          </nav>
-        </div>
-      </aside>
+      <?php get_template_part( 'template-parts/sidebar-column' ); ?>
     </div>
   </section>
 
