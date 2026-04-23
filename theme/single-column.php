@@ -3,7 +3,7 @@
 <?php $dir = get_template_directory_uri(); ?>
 
 <?php while ( have_posts() ) : the_post();
-    $cats = wp_get_post_terms( get_the_ID(), 'column_category', [ 'fields' => 'names' ] );
+    $cats = wp_get_post_terms( get_the_ID(), 'column_category' );
 ?>
 
 <main id="page" class="single">
@@ -23,7 +23,7 @@
         <div class="c-article__meta">
           <time datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'Y.m.d' ); ?></time>
           <?php if ( ! empty( $cats ) ) : ?>
-          <span class="c-article__category c-article__category--blue"><?php echo esc_html( $cats[0] ); ?></span>
+          <span class="c-article__category c-article__category--<?php echo esc_attr( $cats[0]->slug ); ?>"><?php echo esc_html( $cats[0]->name ); ?></span>
           <?php endif; ?>
         </div>
 

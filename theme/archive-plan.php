@@ -1,8 +1,50 @@
 <?php get_header(); ?>
 
-<?php $dir = get_template_directory_uri(); ?>
+<?php
+$dir         = get_template_directory_uri();
+$is_search   = ! empty( $_GET['plan_level'] ) || ! empty( $_GET['travel'] );
+$travel      = ! empty( $_GET['travel'] )     ? sanitize_text_field( wp_unslash( $_GET['travel'] ) ) : '';
+$members     = ! empty( $_GET['members'] )    ? (int) $_GET['members'] : 0;
+$plan_level  = ! empty( $_GET['plan_level'] ) ? sanitize_key( $_GET['plan_level'] ) : '';
+
+// 介助レベルのアイコン数
+$level_num = (int) str_replace( 'level', '', $plan_level );
+?>
 
 <main id="page">
+  <?php if ( $is_search ) : ?>
+  <section class="c-page-header c-page-header--result">
+    <div class="l-inner">
+      <h1 class="c-page-header__title">診断結果</h1>
+    </div>
+  </section>
+
+  <section class="p-archive-plan">
+    <div class="l-inner">
+      <div class="p-archive-plan__filters">
+        <?php if ( $travel ) : ?>
+        <span class="p-archive-plan__filter-chip">
+          <span class="p-archive-plan__filter-label">希望の旅行先</span>
+          <?php echo esc_html( $travel ); ?>
+        </span>
+        <?php endif; ?>
+        <?php if ( $members ) : ?>
+        <span class="p-archive-plan__filter-chip">
+          <span class="p-archive-plan__filter-label">人数</span>
+          <?php echo esc_html( $members ); ?> 人
+        </span>
+        <?php endif; ?>
+        <?php if ( $plan_level ) : ?>
+        <span class="p-archive-plan__filter-chip">
+          <span class="p-archive-plan__filter-label">介助レベル</span>
+          <span class="p-archive-plan__filter-icons">
+            <?php echo travel_island_get_level_icons( $level_num ); ?>
+          </span>
+        </span>
+        <?php endif; ?>
+      </div>
+
+  <?php else : ?>
   <section class="c-page-header">
     <div class="l-inner">
       <h1 class="c-page-header__title">おすすめプラン</h1>
@@ -15,11 +57,15 @@
 
   <section class="p-archive-plan">
     <div class="l-inner">
+  <?php endif; ?>
+
       <ul class="p-archive-plan__list">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-            $level     = (int) get_post_meta( get_the_ID(), 'care_level', true );
-            $tags      = wp_get_post_terms( get_the_ID(), 'plan_tag', [ 'fields' => 'names' ] );
-            $level_label = get_post_meta( get_the_ID(), 'care_level_label', true ) ?: '自立';
+            $level_terms = wp_get_post_terms( get_the_ID(), 'plan_level' );
+            $level_term  = ! empty( $level_terms ) && ! is_wp_error( $level_terms ) ? $level_terms[0] : null;
+            $level       = $level_term ? (int) str_replace( 'level', '', $level_term->slug ) : 0;
+            $level_label = $level_term ? $level_term->name : '自立';
+            $tags        = wp_get_post_terms( get_the_ID(), 'plan_tag', [ 'fields' => 'names' ] );
         ?>
         <li class="p-archive-plan__item">
           <a href="<?php the_permalink(); ?>" class="p-plan-card">
@@ -50,15 +96,22 @@
             </div>
           </a>
         </li>
-        <?php endwhile; endif; ?>
+        <?php endwhile; else : ?>
+        <li class="p-archive-plan__empty">
+          <p>条件に合うプランが見つかりませんでした。</p>
+        </li>
+        <?php endif; ?>
       </ul>
     </div>
   </section>
+
+  <?php if ( $is_search ) : ?>
+  <?php get_template_part( 'template-parts/related-plans', null, [ 'posts_count' => 6, 'extra_class' => 'p-related-plans--result' ] ); ?>
+  <?php endif; ?>
 
   <?php get_template_part( 'template-parts/cta' ); ?>
 </main>
 
 <?php get_template_part( 'template-parts/cta-side' ); ?>
-<?php get_template_part( 'template-parts/modal' ); ?>
 
 <?php get_footer(); ?>

@@ -19,7 +19,7 @@
       <div class="p-archive-column__main">
         <ul class="p-column-list">
           <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-              $cats = wp_get_post_terms( get_the_ID(), 'column_category', [ 'fields' => 'names' ] );
+              $cats = wp_get_post_terms( get_the_ID(), 'column_category' );
           ?>
           <li class="p-column-list__item">
             <a href="<?php the_permalink(); ?>" class="c-card">
@@ -35,7 +35,7 @@
                   <time datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'Y.m.d' ); ?></time>
                   <ul class="c-article__categorylist">
                     <?php if ( ! empty( $cats ) ) : ?>
-                    <li class="c-article__category"><?php echo esc_html( $cats[0] ); ?></li>
+                    <li class="c-article__category c-article__category--<?php echo esc_attr( $cats[0]->slug ); ?>"><?php echo esc_html( $cats[0]->name ); ?></li>
                     <?php endif; ?>
                   </ul>
                 </div>

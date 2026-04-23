@@ -21,7 +21,7 @@
               'order'          => 'DESC',
           ] );
       while ( $popular->have_posts() ) : $popular->the_post();
-          $p_cats = wp_get_post_terms( get_the_ID(), 'column_category', [ 'fields' => 'names' ] );
+          $p_cats = wp_get_post_terms( get_the_ID(), 'column_category' );
       ?>
       <li class="p-sidebar-list__item">
         <a href="<?php the_permalink(); ?>">
@@ -37,7 +37,7 @@
             <div class="p-sidebar-list__meta">
               <time class="p-sidebar-list__date"><?php echo get_the_date( 'Y.m.d' ); ?></time>
               <?php if ( ! empty( $p_cats ) ) : ?>
-              <span class="p-sidebar-list__category"><?php echo esc_html( $p_cats[0] ); ?></span>
+              <span class="p-sidebar-list__category p-sidebar-list__category--<?php echo esc_attr( $p_cats[0]->slug ); ?>"><?php echo esc_html( $p_cats[0]->name ); ?></span>
               <?php endif; ?>
             </div>
             <h3 class="p-sidebar-list__title"><?php the_title(); ?></h3>
@@ -59,7 +59,7 @@
           'order'          => 'DESC',
       ] );
       while ( $recent->have_posts() ) : $recent->the_post();
-          $r_cats = wp_get_post_terms( get_the_ID(), 'column_category', [ 'fields' => 'names' ] );
+          $r_cats = wp_get_post_terms( get_the_ID(), 'column_category' );
       ?>
       <li class="p-sidebar-list__item">
         <a href="<?php the_permalink(); ?>">
@@ -74,7 +74,7 @@
             <div class="p-sidebar-list__meta">
               <time class="p-sidebar-list__date"><?php echo get_the_date( 'Y.m.d' ); ?></time>
               <?php if ( ! empty( $r_cats ) ) : ?>
-              <span class="p-sidebar-list__category"><?php echo esc_html( $r_cats[0] ); ?></span>
+              <span class="p-sidebar-list__category p-sidebar-list__category--<?php echo esc_attr( $r_cats[0]->slug ); ?>"><?php echo esc_html( $r_cats[0]->name ); ?></span>
               <?php endif; ?>
             </div>
             <h3 class="p-sidebar-list__title"><?php the_title(); ?></h3>

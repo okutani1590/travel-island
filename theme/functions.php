@@ -153,6 +153,41 @@ function travel_island_get_popular_column_ids( int $limit = 3 ): array {
     return array_map( 'intval', (array) $results );
 }
 
+function travel_island_plan_archive_filter( WP_Query $query ): void {
+    if ( is_admin() || ! $query->is_main_query() || ! is_post_type_archive( 'plan' ) ) {
+        return;
+    }
+
+    $has_level  = ! empty( $_GET['plan_level'] );
+    $has_travel = ! empty( $_GET['travel'] );
+
+    if ( ! $has_level && ! $has_travel ) {
+        return;
+    }
+
+    // travel（国内/海外）は常に AND 条件
+    if ( $has_travel ) {
+        $allowed = [ '国内旅行', '海外旅行' ];
+        $value   = sanitize_text_field( wp_unslash( $_GET['travel'] ) );
+        if ( in_array( $value, $allowed, true ) ) {
+            $query->set( 'meta_query', [ [
+                'key'   => 'travel',
+                'value' => $value,
+            ] ] );
+        }
+    }
+
+    // plan_level は travel でフィルタした結果の中で絞り込み
+    if ( $has_level ) {
+        $query->set( 'tax_query', [ [
+            'taxonomy' => 'plan_level',
+            'field'    => 'slug',
+            'terms'    => sanitize_key( $_GET['plan_level'] ),
+        ] ] );
+    }
+}
+add_action( 'pre_get_posts', 'travel_island_plan_archive_filter' );
+
 function travel_island_get_level_icons( int $level ): string {
     $dir  = get_template_directory_uri() . '/assets/img/common/';
     $html = '';

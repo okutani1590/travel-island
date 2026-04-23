@@ -87,6 +87,13 @@
     }
   }
 
+  h4 {
+    font-size: 18px;
+    border-bottom: 2px solid #2cbce0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
   p {
     margin-bottom: 1.5em;
   }
@@ -98,12 +105,16 @@
     border-radius: 8px;
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin-bottom: 1.5em;
     padding-left: 1.5em;
 
     li {
       margin-bottom: 0.5em;
+      &::marker {
+        color: #2cbce0;
+      }
     }
   }
 
@@ -160,9 +171,9 @@
   }
 
   &__toggle {
-      font-size: 14px;
-      color: #888;
-      cursor: pointer;
+    font-size: 14px;
+    color: #888;
+    cursor: pointer;
   }
 
   &__list {
@@ -170,9 +181,9 @@
     padding-left: 0;
 
     &--sub {
-        padding-left: 1.5em;
-        margin-top: 5px;
-        margin-bottom: 10px;
+      padding-left: 1.5em;
+      margin-top: 5px;
+      margin-bottom: 10px;
     }
   }
 
@@ -180,34 +191,34 @@
     margin-bottom: 8px;
 
     &--parent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 500;
+
+      span {
         display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        font-weight: 500;
-        
-        span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            background-color: #2cbce0;
-            color: $color-white;
-            border-radius: 50%;
-            font-size: 12px;
-            flex-shrink: 0;
-        }
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        background-color: #2cbce0;
+        color: $color-white;
+        border-radius: 50%;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
     }
 
     &--child {
-        font-size: 14px;
-        color: #666;
-        
-        &::before {
-            content: "└";
-            margin-right: 5px;
-            color: #ccc;
-        }
+      font-size: 14px;
+      color: #666;
+
+      &::before {
+        content: "└";
+        margin-right: 5px;
+        color: #ccc;
+      }
     }
 
     a {
@@ -227,6 +238,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   margin-top: 80px;
   padding-top: 40px;
   border-top: 1px solid #eee;
@@ -244,13 +256,15 @@
     font-weight: bold;
     color: #2cbce0;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 0 20px;
+    height: 44px;
     border: 1px solid #2cbce0;
     border-radius: 50px;
     transition: all 0.3s;
 
     @include mq(sp) {
-      padding: 8px 15px;
+      padding: 0 15px;
+      height: 40px;
       font-size: 13px;
     }
 
@@ -270,15 +284,18 @@
     }
 
     &--list {
-        background-color: #eee;
-        border-color: #eee;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #eee;
+      border-color: #eee;
+      color: #333;
+
+      &:hover {
+        background-color: #ddd;
+        border-color: #ddd;
         color: #333;
-        
-        &:hover {
-            background-color: #ddd;
-            border-color: #ddd;
-            color: #333;
-        }
+      }
     }
   }
 }

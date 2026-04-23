@@ -1,4 +1,5 @@
 @use "../foundation" as *;
+
 .c-modal {
   position: fixed;
   top: 0;
@@ -13,7 +14,6 @@
   visibility: hidden;
   transition: all 0.3s;
 
-  // モーダルが開いている時のクラス
   &.is-open {
     opacity: 1;
     visibility: visible;
@@ -23,7 +23,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); // 背景の透過
+    background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
   }
 
@@ -31,286 +31,268 @@
     position: relative;
     background-color: #fff;
     width: 90%;
-    max-width: 500px;
-    padding: 60px 40px 40px;
-    border-radius: 12px;
+    max-width: 640px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 50px;
+    border-radius: 20px;
     z-index: 10;
+
+    @include mq(sp) {
+      padding: 40px 24px 32px;
+    }
   }
 
-  &__title{
-    text-align: center;
-   margin-bottom: 40px;
-  }
-  &__subtitle{
-    font-size: 18px;
-    margin-bottom: 10px;
-   color: $color-primary;
-   display: flex;
-	justify-content: center;
-	align-items: center;
-
-
-  &:before,
-&::after {
-	content: '';
-	width: 2px;
-	height: 20px;
-	background-color: $color-primary;
-  opacity: 0.5;
-}
-
-&::before {
-	margin-right: 30px;
-	transform: rotate(-35deg)
-}
-&::after {
-	margin-left: 20px;
-	transform: rotate(35deg)
-}
-  }
- &__main-title{
-    font-size: 26px;
-
-   width: fit-content;
-   margin: 0 auto;
-   display: flex;
-   align-items: center;
-   gap: 5px;
-   &::before{
-        display: inline-block;
-        content: "";
-          
-          width: 30px;
-          height: 30px;
-          background :url(../img/common/check-icon.svg) no-repeat center / contain ;
-
-   }
- }
-
-
-
-&__close-btn{
-      background: none;
+  &__close-btn {
+    background: none;
     border: none;
-    font-size: 32px;
-    font-weight: 400;
     position: absolute;
-    top: 2%;
-    right: 5%;
-}
-}
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    padding: 0;
 
-
-
-
-
-// モーダル内のコンテンツデザイン（Project）
-.p-auth-modal {
-  text-align: center;
-
-  &__title {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-
-  &__separator {
-    margin: 20px 0;
-    position: relative;
-    // or の横に線を引くデザイン
-  }
-}
-
-
-
-
-
-
-// --- 変数定義 ---
-$primary-color: #34c3eb; // メインの水色
-$text-dark: #333333;
-$bg-gray: #f8f9fa;
-$border-color: #d1d5db;
-$radius-round: 50px;
-$transition: all 0.3s ease;
-
-// --- Mixin (再利用可能なパーツ) ---
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.simple-form {
-.form-item{
-  display: block;
-  margin-bottom: 20px;
-}
-
-  .form-label{
-    margin-bottom: 10px;
-    display: block;
-  }
-  // セレクトボックス
-  .form-select-wrapper {
-    position: relative;
-    &::after {
-      content: '';
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 0; height: 0;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 6px solid #666; // 矢印
-      pointer-events: none;
-    }
-
-    .form-select {
+    img {
       width: 100%;
-      padding: 15px;
-      background-color: #fff;
-      border: 1px solid $border-color;
-      border-radius: 8px;
-      appearance: none;
-      cursor: pointer;
-      &:focus { outline-color: $primary-color; }
+      height: 100%;
     }
   }
 
-  // 介助レベル（ボタン選択式）
-  .form-button-group {
+  // ヘッダー
+  &__header {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 50px;
 
-    .btn-radio {
-      flex: 1;
-      input {
-        display: none;
-      }
+    @include mq(sp) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      width: 2px;
+      height: 20px;
+      background-color: $color-primary;
+      opacity: 0.6;
     }
 
-    &:not(.form-button-group--level) .btn-radio {
+    &::before {
+      transform: rotate(-35deg);
+    }
+
+    &::after {
+      transform: rotate(35deg);
+    }
+  }
+
+  &__main-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #23393c;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @include mq(sp) {
+      font-size: 22px;
+    }
+  }
+
+  &__title-icon {
+    flex-shrink: 0;
+  }
+
+  // フォーム全体
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__form-label {
+    font-size: 20px;
+    font-weight: 500;
+    color: #23393c;
+
+    @include mq(sp) {
+      font-size: 16px;
+    }
+  }
+
+  // ラジオボタングループ（ピル型）
+  &__btn-group {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__btn-radio {
+    flex: 1;
+
+    input {
+      display: none;
+    }
+
+    // 通常状態
+    .c-modal__btn-face {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 53px;
+      padding: 0 20px;
+      border: 1px solid $color-primary;
+      border-radius: 100px;
+      background-color: #fff;
+      color: $color-primary;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      transition:
+        background-color 0.2s,
+        color 0.2s;
+      white-space: nowrap;
+    }
+
+    // 選択状態
+    input:checked + .c-modal__btn-face {
+      background-color: $color-primary;
+      color: #fff;
       span {
-        @include flex-center;
-        height: 50px;
-        border: 1px solid $primary-color;
-        border-radius: $radius-round;
-        color: $primary-color;
-        font-size: 0.9rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: $transition;
-        background: #fff;
-      }
-
-      input:checked + span {
-        background-color: $primary-color;
-        color: #fff;
+        color: $color-white !important;
       }
     }
+  }
 
-    // アイコン付き介助レベル（level-icon_on / off）
-    &--level {
-      .btn-radio {
-        input:checked + .btn-radio__face {
-          background-color: rgba($primary-color, 0.12);
-          border-color: $primary-color;
-          border-width: 2px;
-          box-shadow: 0 0 0 1px rgba($primary-color, 0.25);
-        }
+  // 介助レベル（2列グリッド・ラベル＋アイコン横並び）
+  &__btn-group--level {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 
-        .btn-radio__face {
-          @include flex-center;
-          flex-direction: column;
-          gap: 8px;
-          min-height: 88px;
-          height: auto;
-          padding: 14px 10px 12px;
-          border: 1px solid $border-color;
-          border-radius: 16px;
-          color: $text-dark;
-          background: #fff;
-          cursor: pointer;
-          transition: $transition;
-        }
+    .c-modal__btn-radio {
+      flex: none;
+    }
 
-        .btn-radio__icons {
-          display: flex;
-          align-items: flex-end;
-          justify-content: center;
-          gap: 6px;
-          line-height: 0;
+    .c-modal__btn-face {
+      justify-content: space-between;
+      gap: 14px;
+    }
 
-          img {
-            width: 14px;
-            height: 18px;
-            flex-shrink: 0;
-            display: block;
-          }
-        }
-
-        .btn-radio__label {
-          font-size: 0.85rem;
-          font-weight: bold;
-          line-height: 1.25;
-          text-align: center;
-          color: $text-dark;
-        }
-
-        input:checked + .btn-radio__face .btn-radio__label {
-          color: $primary-color;
-        }
+    input:checked + .c-modal__btn-face {
+      .c-modal__btn-icons img {
+        filter: brightness(0) invert(1);
       }
+    }
+  }
+
+  &__btn-label {
+    flex-shrink: 0;
+    color: $color-primary;
+  }
+
+  &__btn-icons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+
+    img {
+      width: 14px;
+      height: 18px;
+      display: block;
     }
   }
 
   // 人数入力
-  .form-input-inline {
+  &__number-wrap {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+  }
 
-    .form-input-number {
-      width: 80px;
-      padding: 12px;
-      background-color: $bg-gray;
-      border: none;
-      border-radius: 8px;
-      text-align: center;
-      font-size: 1.1rem;
+  &__number-input {
+    width: 53px;
+    height: 53px;
+    background-color: #f8f8f8;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.4);
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      opacity: 1;
     }
   }
 
-  // 実行ボタン
-  .form-submit {
-    margin-top: 40px;
-    
-    .btn-submit {
-      width: 100%;
-      padding: 20px;
-      background-color: $primary-color;
+  &__number-unit {
+    font-size: 18px;
+    color: #23393c;
+  }
+
+  // 送信ボタン
+  &__submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    padding: 0 40px;
+    background-color: $color-primary;
+
+    border: none;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 5%;
+      background: url(../img/common/search-icon.svg) no-repeat center / contain;
+    }
+    span {
       color: #fff;
-      border: none;
-      border-radius: $radius-round;
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
- 
-      transition: $transition;
-
-      &:hover {
-        opacity: 0.8;
-        transform: translateY(-2px);
-      }
     }
-  }
-}
+    @include mq(sp) {
+      font-size: 16px;
+      padding: 0 24px;
+      height: 58px;
+    }
 
-// モバイル対応（横並びボタンを縦または2列に）
-@media (max-width: 480px) {
-  .simple-form .form-button-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    &:hover {
+      opacity: 0.85;
+    }
+
+    svg {
+      flex-shrink: 0;
+    }
   }
 }

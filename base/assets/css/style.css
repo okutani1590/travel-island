@@ -87,7 +87,10 @@ main {
   display: block;
   height: 100%;
   transform: translateY(0);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
 }
 @media (any-hover: hover) {
   .c-card:hover {
@@ -383,7 +386,7 @@ a {
 .c-cta-banner__icon {
   width: 40px;
   align-self: stretch; /* 高さを親いっぱいに広げる */
-  background-color: #40b0d9; /* 空色の背景 */
+  background-color: #2cbce0; /* 空色の背景 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -409,7 +412,10 @@ a {
   text-decoration: none;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 .c-img-banner:hover {
   opacity: 0.85;
@@ -491,7 +497,9 @@ a {
   /* 初期状態：右側に隠しておく */
   transform: translateX(100%);
   opacity: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
   pointer-events: none;
   /* 表示状態：クラスがついたら元の位置へ */
 }
@@ -718,7 +726,8 @@ a {
   justify-content: center;
   align-items: center;
 }
-.c-modal__subtitle:before, .c-modal__subtitle::after {
+.c-modal__subtitle:before,
+.c-modal__subtitle::after {
   content: "";
   width: 2px;
   height: 20px;
@@ -1250,11 +1259,13 @@ a {
   display: flex;
   gap: 120px;
 }
-.l-inner--left, .l-inner--right {
+.l-inner--left,
+.l-inner--right {
   width: 50%;
   position: relative;
 }
-.l-inner--left .btn, .l-inner--right .btn {
+.l-inner--left .btn,
+.l-inner--right .btn {
   top: 0 !important;
 }
 .p-hero {
@@ -1536,7 +1547,9 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
   /* 動くスピードとタイミングの設定 */
-  transition: transform 0.3s ease-out, right 0.3s ease-out;
+  transition:
+    transform 0.3s ease-out,
+    right 0.3s ease-out;
 }
 .plan__item a p {
   position: absolute;
@@ -1693,14 +1706,17 @@ a {
   flex-shrink: 0;
   margin-left: 20px;
 }
-.p-faq-accordion__icon::before, .p-faq-accordion__icon::after {
+.p-faq-accordion__icon::before,
+.p-faq-accordion__icon::after {
   content: "";
   position: absolute;
   background-color: #2cbce0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 .p-faq-accordion__icon::before {
   width: 100%;
@@ -1750,7 +1766,10 @@ a {
   padding: 25px 35px;
   border-radius: 10px;
   background-color: #f8f8f8;
-  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 @media (any-hover: hover) {
   .p-news-list__item a:hover {
@@ -2065,16 +2084,16 @@ a {
   margin-top: auto;
 }
 .p-sidebar-category__btn--red {
-  background-color: #f68b8b;
+  background-color: #ff8688;
 }
 .p-sidebar-category__btn--orange {
-  background-color: #f1a817;
+  background-color: #ecb100;
 }
 .p-sidebar-category__btn--green {
-  background-color: #44bc6c;
+  background-color: #36be4f;
 }
 .p-sidebar-category__btn--blue {
-  background-color: #40b0d9;
+  background-color: #2cbce0;
 }
 
 .c-pagination {
@@ -2086,7 +2105,8 @@ a {
   align-items: center;
   gap: 10px;
 }
-.c-pagination__item a, .c-pagination__item span {
+.c-pagination__item a,
+.c-pagination__item span {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2326,9 +2346,9 @@ a {
     width: 100%;
   }
 }
-.p-form__input-wrap input[type=text],
-.p-form__input-wrap input[type=tel],
-.p-form__input-wrap input[type=email],
+.p-form__input-wrap input[type="text"],
+.p-form__input-wrap input[type="tel"],
+.p-form__input-wrap input[type="email"],
 .p-form__input-wrap select,
 .p-form__input-wrap textarea {
   width: 100%;
@@ -2337,20 +2357,22 @@ a {
   border-radius: 8px;
   background-color: #f9fafb;
   font-size: 15px;
-  transition: border-color 0.3s, background-color 0.3s;
+  transition:
+    border-color 0.3s,
+    background-color 0.3s;
 }
-.p-form__input-wrap input[type=text]:focus,
-.p-form__input-wrap input[type=tel]:focus,
-.p-form__input-wrap input[type=email]:focus,
+.p-form__input-wrap input[type="text"]:focus,
+.p-form__input-wrap input[type="tel"]:focus,
+.p-form__input-wrap input[type="email"]:focus,
 .p-form__input-wrap select:focus,
 .p-form__input-wrap textarea:focus {
   outline: none;
   border-color: #2cbce0;
   background-color: #ffffff;
 }
-.p-form__input-wrap input[type=text]::placeholder,
-.p-form__input-wrap input[type=tel]::placeholder,
-.p-form__input-wrap input[type=email]::placeholder,
+.p-form__input-wrap input[type="text"]::placeholder,
+.p-form__input-wrap input[type="tel"]::placeholder,
+.p-form__input-wrap input[type="email"]::placeholder,
 .p-form__input-wrap select::placeholder,
 .p-form__input-wrap textarea::placeholder {
   color: #9ca3af;
@@ -2362,7 +2384,7 @@ a {
   height: 200px;
   resize: vertical;
 }
-.p-form__input-wrap input[type=date] {
+.p-form__input-wrap input[type="date"] {
   padding: 12px 15px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
@@ -2517,7 +2539,7 @@ a {
   gap: 8px;
   padding: 4px 10px;
   border-radius: 6px;
-  background-color: #ECB100;
+  background-color: #ecb100;
   font-size: 14px;
   font-weight: bold;
   color: #ffffff;
@@ -2905,11 +2927,13 @@ a {
   margin-bottom: 1.5em;
   border-radius: 8px;
 }
-.p-entry-content ul, .p-entry-content ol {
+.p-entry-content ul,
+.p-entry-content ol {
   margin-bottom: 1.5em;
   padding-left: 1.5em;
 }
-.p-entry-content ul li, .p-entry-content ol li {
+.p-entry-content ul li,
+.p-entry-content ol li {
   margin-bottom: 0.5em;
 }
 .p-entry-content ul {

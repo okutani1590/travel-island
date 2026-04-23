@@ -12,6 +12,7 @@
     time {
       white-space: nowrap;
       font-weight: 500;
+      color: #aaa9a9;
     }
   }
   &__categorylist {
@@ -36,20 +37,20 @@
     background-color: #fbbf24; // デフォルト: 黄色系
     white-space: nowrap;
 
-    &--green {
-      background-color: #22c55e;
-    }
-
-    &--yellow {
-      background-color: #fbbf24;
-    }
-
-    &--blue {
+    &--information {
       background-color: #2cbce0;
     }
 
-    &--orange {
-      background-color: #f7b52c;
+    &--news {
+      background-color: #ff8688;
+    }
+
+    &--campaign {
+      background-color: #ecb100;
+    }
+
+    &--attempt {
+      background-color: #36be4f;
     }
   }
 }

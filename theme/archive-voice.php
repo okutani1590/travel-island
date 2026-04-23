@@ -18,7 +18,7 @@
       <ul class="p-card-list">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
             $tags = wp_get_post_terms( get_the_ID(), 'voice_tag', [ 'fields' => 'names' ] );
-            $name = get_post_meta( get_the_ID(), 'voice_name', true ) ?: 'お客様';
+            $name = ( get_field( 'names' ) ?: 'S' ) . '様';
         ?>
         <li class="p-card-list__item">
           <a href="<?php the_permalink(); ?>" class="c-card">
@@ -59,6 +59,5 @@
 </main>
 
 <?php get_template_part( 'template-parts/cta-side' ); ?>
-<?php get_template_part( 'template-parts/modal' ); ?>
 
 <?php get_footer(); ?>

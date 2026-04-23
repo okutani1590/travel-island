@@ -352,7 +352,7 @@
             </figure>
             <div class="c-card__body">
               <div class="c-card__meta">
-                <span class="c-card__name"><?php echo esc_html( get_post_meta( get_the_ID(), 'voice_name', true ) ?: 'S様' ); ?></span>
+                <span class="c-card__name"><?php echo esc_html( ( get_field( 'names' ) ?: 'S' ) . '様' ); ?></span>
                 <?php if ( ! empty( $tags ) ) : ?>
                 <ul class="c-card__taglist" aria-label="お客様情報">
                   <?php foreach ( $tags as $tag ) : ?>
@@ -401,7 +401,7 @@
         ] );
         if ( $column_query->have_posts() ) :
             while ( $column_query->have_posts() ) : $column_query->the_post();
-                $cats = wp_get_post_terms( get_the_ID(), 'column_category', [ 'fields' => 'names' ] );
+                $cats = wp_get_post_terms( get_the_ID(), 'column_category' );
         ?>
         <li class="p-card-list__item">
           <a href="<?php the_permalink(); ?>" class="c-card">
@@ -417,7 +417,7 @@
                 <time datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'Y.m.d' ); ?></time>
                 <ul class="c-article__categorylist">
                   <?php if ( ! empty( $cats ) ) : ?>
-                  <li class="c-article__category"><?php echo esc_html( $cats[0] ); ?></li>
+                  <li class="c-article__category c-article__category--<?php echo esc_attr( $cats[0]->slug ); ?>"><?php echo esc_html( $cats[0]->name ); ?></li>
                   <?php endif; ?>
                 </ul>
               </div>
@@ -470,7 +470,7 @@
                   <time datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'Y.m.d' ); ?></time>
                   <ul class="c-article__categorylist">
                     <?php if ( ! empty( $cats ) ) : ?>
-                    <li class="c-article__category c-article__category--yellow"><?php echo esc_html( $cats[0]->name ); ?></li>
+                    <li class="c-article__category c-article__category--<?php echo esc_attr( $cats[0]->slug ); ?>"><?php echo esc_html( $cats[0]->name ); ?></li>
                     <?php endif; ?>
                   </ul>
                 </div>
@@ -552,6 +552,5 @@
 </main>
 
 <?php get_template_part( 'template-parts/cta-side' ); ?>
-<?php get_template_part( 'template-parts/modal' ); ?>
 
 <?php get_footer(); ?>

@@ -53,33 +53,57 @@ window.addEventListener("scroll", function () {
 // ポップアップ
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. 要素を正確に取得
-  const downloadBtn = document.querySelector(".js-popup-btn");
-    const closeiconBtn = document.querySelector(".c-modal__close-btn");
   const modal = document.getElementById("js-modal");
-  const closeBtn = document.getElementById("js-modal-close");
+  if (!modal) return;
 
-  // 2. ボタンが存在するか確認してからイベントをつける
-  if (downloadBtn && modal) {
-    downloadBtn.addEventListener("click", (e) => {
-      e.preventDefault(); // 本来の送信（リロード）を止める
+  // すべての .js-popup-btn でモーダルを開く
+  document.querySelectorAll(".js-popup-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
       modal.classList.add("is-open");
-      console.log("Modal opened"); // ブラウザのコンソールで確認用
+    });
+  });
+
+  // 背景クリックで閉じる
+  const overlay = document.getElementById("js-modal-close");
+  if (overlay) {
+    overlay.addEventListener("click", () => {
+      modal.classList.remove("is-open");
     });
   }
 
-  // 3. 背景クリックで閉じる
+  // × ボタンで閉じる
+  const closeBtn = document.querySelector(".c-modal__close-btn");
   if (closeBtn) {
     closeBtn.addEventListener("click", () => {
       modal.classList.remove("is-open");
     });
   }
+});
 
-    if (closeiconBtn) {
-    closeiconBtn.addEventListener("click", () => {
-      modal.classList.remove("is-open");
+// プラン診断モーダル 検索
+document.addEventListener("DOMContentLoaded", () => {
+  const submitBtn = document.querySelector(".c-modal__submit-btn");
+  if (!submitBtn) return;
+
+  submitBtn.addEventListener("click", () => {
+    const archiveUrl = submitBtn.dataset.archiveUrl;
+    if (!archiveUrl) return;
+
+    const destinationMap = { domestic: "国内旅行", overseas: "海外旅行" };
+
+    const level = document.querySelector('input[name="level"]:checked')?.value || "1";
+    const destinationKey = document.querySelector('input[name="destination"]:checked')?.value || "domestic";
+    const members = document.querySelector(".c-modal__number-input")?.value || "1";
+
+    const params = new URLSearchParams({
+      plan_level: `level${level}`,
+      travel: destinationMap[destinationKey],
+      members,
     });
-  }
+
+    window.location.href = `${archiveUrl}?${params.toString()}`;
+  });
 });
 
 // スムーススクロール

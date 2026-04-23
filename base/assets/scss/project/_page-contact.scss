@@ -23,11 +23,11 @@
 
   &__note {
     font-size: 14px;
-  opacity: 0.5;
-&::before {
-  content: "※";
-  margin-left: 4px;
-}
+    opacity: 0.5;
+    &::before {
+      content: "※";
+      margin-left: 4px;
+    }
   }
 }
 
@@ -40,7 +40,6 @@
     display: flex;
     gap: 0px;
     padding: 25px 0;
-
 
     @include mq(sp) {
       flex-direction: column;
@@ -74,10 +73,8 @@
 
   &__input-wrap {
     flex-grow: 1;
-    display: flex;
-    align-items: center;
+    width: 100%;
     gap: 15px;
-
     @include mq(sp) {
       width: 100%;
     }
@@ -93,7 +90,9 @@
       border-radius: 8px;
       background-color: #f9fafb;
       font-size: 15px;
-      transition: border-color 0.3s, background-color 0.3s;
+      transition:
+        border-color 0.3s,
+        background-color 0.3s;
 
       &:focus {
         outline: none;
@@ -106,9 +105,8 @@
       }
     }
 
-
-    select{
-        max-width: 300px;
+    select {
+      max-width: 300px;
     }
     textarea {
       height: 200px;
@@ -124,16 +122,16 @@
     }
 
     &--date {
-        gap: 10px;
-        @include mq(sp) {
-            flex-wrap: wrap;
-        }
+      gap: 10px;
+      @include mq(sp) {
+        flex-wrap: wrap;
+      }
     }
   }
 
   &__policy {
     margin-top: 60px;
-    
+
     &-box {
       height: 200px;
       overflow-y: scroll;
@@ -148,11 +146,10 @@
       p {
         margin-bottom: 1em;
       }
-     
     }
-     &-head{
-        font-weight: 600;
-      }
+    &-head {
+      font-weight: 600;
+    }
 
     &-check {
       text-align: center;
