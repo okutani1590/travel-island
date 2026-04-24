@@ -6,6 +6,10 @@
   padding: 0 20px;
   position: relative;
 
+  @include mq(tab) {
+    padding: 0 30px;
+  }
+
   &--flex {
     display: flex;
     gap: 120px;
