@@ -4,10 +4,16 @@
 .p-hero {
   background-color: #a4deed;
   padding-bottom: 80px;
+  @include mq(sp) {
+    padding-bottom: 20px;
+  }
   img {
     display: block;
     width: 90%;
     margin-left: auto;
+    @include mq(sp) {
+      width: 100%;
+    }
   }
 }
 
@@ -34,6 +40,12 @@
     text-align: center;
     @include mq(sp) {
       width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 25px;
+      padding-left: 20px;
+      text-align: left;
     }
     &:not(:last-child) {
       border-right: 1px dashed #ccc;
@@ -44,8 +56,28 @@
         padding-right: 0;
         border-right: none;
         border-bottom: 1px dashed #ccc;
-        margin-bottom: 40px;
-        padding-bottom: 40px;
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+      }
+    }
+  }
+
+  &__text {
+    @include mq(sp) {
+      flex: 1;
+    }
+  }
+
+  &__list-image {
+    @include mq(sp) {
+      order: -1;
+      flex-shrink: 0;
+      width: 70px;
+
+      img {
+        width: 100%;
+        padding: 0;
+        height: auto;
       }
     }
   }
@@ -68,6 +100,10 @@
     margin-bottom: 30px;
     span {
       color: $color-primary;
+    }
+    @include mq(sp) {
+      font-size: calc((16 / 390) * 100vw);
+      margin-bottom: 0;
     }
   }
 }
@@ -132,7 +168,7 @@
       line-height: 1.4;
 
       @media (max-width: 768px) {
-        font-size: 20px;
+        font-size: calc((20 / 390) * 100vw);
       }
     }
 
@@ -140,6 +176,9 @@
       font-size: 18px;
       line-height: 1.8;
       margin: 0;
+      @include mq(sp) {
+        font-size: 14px;
+      }
     }
 
     &__image-wrapper {
@@ -167,7 +206,7 @@
   padding: 80px 0; // 上下の余白
 
   @include mq(sp) {
-    padding: 80px 0 0; // 上下の余白
+    padding: 0px 0 0; // 上下の余白
   }
   &-container {
     display: flex;
@@ -176,20 +215,26 @@
     gap: 60px;
 
     @include mq(sp) {
-      flex-direction: column-reverse;
+      flex-direction: column;
     }
   }
 
   /* 左側：画像エリア */
   &-visual {
     flex: 0 0 38%;
-
+    @include mq(sp) {
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
     img {
       width: 100%;
       height: auto;
       vertical-align: bottom;
 
       border-radius: 10px;
+      @include mq(sp) {
+        border-radius: 10px 10px 0 0;
+      }
     }
   }
 
@@ -206,6 +251,9 @@
     font-weight: bold;
     line-height: 1.4;
     margin-bottom: 30px;
+    @include mq(sp) {
+      font-size: 24px;
+    }
     &::before {
       content: "";
       position: absolute;
@@ -224,7 +272,9 @@
       font-size: 16px;
       line-height: 2.2em; // 画像のゆったりした行間を再現
       margin-bottom: 20px;
-
+      @include mq(sp) {
+        font-size: 14px;
+      }
       &:last-child {
         margin-bottom: 0;
       }
@@ -237,9 +287,7 @@
     width: fit-content;
     margin-left: auto;
     text-align: left;
-    @include mq(sp) {
-      margin-left: 0;
-    }
+
     &-role {
       font-size: 16px;
       font-weight: bold;
@@ -272,6 +320,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
+    @include mq(sp) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
   }
 
   &__item {
@@ -280,9 +332,23 @@
       position: relative;
       width: 100%;
       height: 100%;
-      transition: opacity 0.3s ease; // 全体の透明度変化を滑らかに
+      transition: opacity 0.3s ease;
       border-radius: 10px;
       overflow: hidden;
+
+      @include mq(sp) {
+        height: 120px;
+      }
+
+      img {
+        @include mq(sp) {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
 
       &::before {
         content: "";
@@ -294,10 +360,19 @@
         background-image: url(../../assets/img/common/arrow-icon.svg);
         background-size: contain;
         background-repeat: no-repeat;
-        /* 動くスピードとタイミングの設定 */
         transition:
           transform 0.3s ease-out,
           right 0.3s ease-out;
+
+        @include mq(sp) {
+          width: 30px;
+          height: 30px;
+          bottom: 14px;
+          right: auto;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1;
+        }
       }
 
       p {
@@ -308,13 +383,22 @@
         color: $color-white;
         font-size: 22px;
         font-weight: bold;
+        @include mq(sp) {
+          font-size: 16px;
+          top: 45px;
+          left: 14px;
+          transform: translateY(-50%);
+          text-align: center;
+          width: 100%;
+          max-width: calc(100% - 28px);
+          word-break: auto-phrase;
+        }
       }
       @media (hover: hover) {
         &:hover {
           opacity: 0.8;
 
           &::before {
-            /* 右に5px分移動させる（rightの値を減らすか、translateXを使う） */
             transform: translateX(5px);
           }
         }
@@ -354,9 +438,17 @@
     h3 {
       font-size: 26px;
       margin-bottom: 20px;
+      @include mq(sp) {
+        font-size: 17px;
+        text-align: center;
+      }
     }
     p {
       font-size: 18px;
+      @include mq(sp) {
+        font-size: 13px;
+        text-align: center;
+      }
     }
   }
 
@@ -364,6 +456,7 @@
     width: 50%;
     @include mq(sp) {
       width: 100%;
+      text-align: center;
     }
   }
 }
@@ -409,6 +502,11 @@
   border-spacing: 5px;
   min-width: 520px;
 
+  @include mq(sp) {
+    min-width: 0;
+    table-layout: fixed;
+  }
+
   th,
   td {
     text-align: center;
@@ -453,8 +551,8 @@
     color: #23393c;
 
     @include mq(sp) {
-      font-size: 12px;
-      padding: 12px 8px;
+      font-size: 13px;
+      padding: 10px 6px;
     }
   }
 
@@ -488,6 +586,10 @@
     font-weight: normal;
     margin-top: 4px;
     color: $color-primary;
+
+    @include mq(sp) {
+      font-size: 10px;
+    }
   }
 
   &__row--total {
@@ -513,6 +615,32 @@
   }
 }
 
+// sns
+
+.home .info {
+  @include mq(sp) {
+    .l-inner--flex {
+      flex-direction: column;
+    }
+    .l-inner--left {
+      width: 100%;
+    }
+    .l-inner--right {
+      width: 100%;
+    }
+    .btn {
+      max-width: 160px;
+      a {
+        height: 45px;
+        padding-left: 20px;
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
 // よくある質問
 
 .faq {
@@ -527,6 +655,81 @@
 // トラベルコラム（カード一覧背景）
 .travel-column {
   background-color: #f3fbff;
+}
+
+// Swiper SP スライダー
+@include mq(sp) {
+  .js-card-swiper {
+    margin-inline: -20px;
+
+    // p-card-list の display:grid / gap / margin を上書き（Swiper が flex で管理するため）
+    .p-card-list {
+      display: flex !important;
+      grid-template-columns: none;
+      gap: 0;
+      margin: 0;
+    }
+
+    .swiper-slide {
+      width: 310px;
+    }
+
+    .swiper-pagination {
+      position: static;
+      width: 120px;
+      height: 3px;
+      background-color: #d9d9d9;
+      border-radius: 100px;
+      margin: 16px auto 0;
+      overflow: hidden;
+
+      .swiper-pagination-progressbar-fill {
+        background-color: $color-primary;
+        border-radius: 100px;
+      }
+    }
+  }
+}
+
+// PC時 グリッドレイアウトに戻す
+@media screen and (min-width: 768px) {
+  .js-card-swiper {
+    overflow: visible;
+
+    .p-card-list {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px 24px;
+      margin: 40px 0 0;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .swiper-slide {
+      width: auto !important;
+    }
+
+    .swiper-pagination {
+      display: none;
+    }
+  }
+}
+
+// SP時 もっと見るボタン位置リセット
+@include mq(sp) {
+  .customer-voice,
+  .travel-column {
+    .btn--position-right {
+      position: static;
+      margin: 60px auto 0;
+    }
+    .c-sec-header {
+      text-align: center;
+      .c-sec-header__subtitle {
+        justify-content: center;
+      }
+    }
+  }
 }
 
 .p-faq-accordion {
@@ -552,7 +755,10 @@
     position: relative;
     padding-left: 5rem;
     font-size: 20px;
-
+    @include mq(sp) {
+      font-size: 13px;
+      padding-left: 2.5em;
+    }
     &::before {
       content: "";
       position: absolute;
@@ -564,6 +770,10 @@
       background: url(../../assets/img/common/q-icon.svg);
       background-size: contain;
       background-repeat: no-repeat;
+      @include mq(sp) {
+        width: 25px;
+        height: 25px;
+      }
     }
   }
 
@@ -580,6 +790,9 @@
     font-weight: 700;
     font-size: 1.1rem;
     text-align: left;
+    @include mq(sp) {
+      padding: 15px 15px;
+    }
   }
 
   &__icon {
@@ -629,6 +842,10 @@
     line-height: 1.8;
     color: #4b5563;
     position: relative;
+    @include mq(sp) {
+      font-size: 14px;
+      padding-left: 2.5em;
+    }
     &::before {
       content: "";
       position: absolute;
@@ -640,6 +857,10 @@
       background: url(../../assets/img/common/a-icon.svg);
       background-size: contain;
       background-repeat: no-repeat;
+      @include mq(sp) {
+        width: 25px;
+        height: 25px;
+      }
     }
   }
 }

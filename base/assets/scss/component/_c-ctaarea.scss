@@ -260,7 +260,10 @@ $breakpoint-sp: 768px;
   &__list {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 15px;
+    @include mq(sp) {
+      flex-direction: row;
+    }
   }
 
   &__item {

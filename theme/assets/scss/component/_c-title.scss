@@ -35,6 +35,9 @@
     align-items: flex-start;
     justify-content: center;
     color: $color-primary;
+    @include mq(sp) {
+      margin-bottom: 10px;
+    }
     i {
       margin-top: 3px;
       margin-right: 10px;

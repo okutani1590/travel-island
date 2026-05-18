@@ -11,7 +11,7 @@
             <h2 class="c-modal__main-title">
                 <img src="<?php echo esc_url( $dir ); ?>/assets/img/common/check-icon.svg" alt=""
                     class="c-modal__title-icon" width="34" height="34" />
-                あなたにおすすめプラン診断
+                あなたにおすすめ<br class="sp" />プラン診断
             </h2>
         </div>
 
@@ -110,7 +110,8 @@
             </div>
 
             <div class="c-modal__submit">
-                <button type="button" class="c-modal__submit-btn" data-archive-url="<?php echo esc_url( get_post_type_archive_link( 'plan' ) ); ?>">
+                <button type="button" class="c-modal__submit-btn"
+                    data-archive-url="<?php echo esc_url( get_post_type_archive_link( 'plan' ) ); ?>">
                     <span>おすすめプランの結果を見る</span>
 
                 </button>

@@ -20,12 +20,25 @@ function travel_island_enqueue() {
         null
     );
     wp_enqueue_style(
+        'swiper-css',
+        'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css',
+        [],
+        null
+    );
+    wp_enqueue_style(
         'travel-island-style',
         get_template_directory_uri() . '/assets/css/style.css',
-        [ 'google-fonts' ],
-        '1.0.0'
+        [ 'google-fonts', 'swiper-css' ],
+        '1.0.1'
     );
 
+    wp_enqueue_script(
+        'swiper-js',
+        'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js',
+        [],
+        null,
+        true
+    );
     wp_enqueue_script(
         'gsap',
         'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js',
@@ -36,9 +49,9 @@ function travel_island_enqueue() {
     wp_enqueue_script(
         'travel-island-option',
         get_template_directory_uri() . '/assets/js/option.js',
-        [],
-        '1.0.0',
-        false
+        [ 'swiper-js' ],
+        '1.0.1',
+        true
     );
     wp_enqueue_script(
         'gsap-scrolltrigger',
@@ -106,7 +119,7 @@ function travel_island_register_cpts() {
     register_taxonomy( 'plan_tag', 'plan', [
         'label'        => 'プランタグ',
         'public'       => true,
-        'hierarchical' => false,
+        'hierarchical' => true,
         'rewrite'      => [ 'slug' => 'plan-tag' ],
         'show_in_rest' => true,
     ] );
@@ -136,6 +149,16 @@ function travel_island_register_cpts() {
     ] );
 }
 add_action( 'init', 'travel_island_register_cpts' );
+
+function travel_island_register_plan_tags() {
+    $terms = [ '食事介助あり', '入浴介助あり', '移動時間短め' ];
+    foreach ( $terms as $term ) {
+        if ( ! term_exists( $term, 'plan_tag' ) ) {
+            wp_insert_term( $term, 'plan_tag' );
+        }
+    }
+}
+add_action( 'init', 'travel_island_register_plan_tags' );
 
 function travel_island_get_popular_column_ids( int $limit = 3 ): array {
     global $wpdb;

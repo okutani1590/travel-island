@@ -2,13 +2,25 @@
 
 // 共通ページヘッダー（FV）
 .c-page-header {
-background: rgba(44, 188, 224, 10);
-background: linear-gradient(125deg, rgba(44, 188, 224, 0.8) 0%, rgba(240, 234, 169, 0.8) 100%);
+  background: rgba(44, 188, 224, 10);
+  background: linear-gradient(125deg, rgba(44, 188, 224, 0.8) 0%, rgba(240, 234, 169, 0.8) 100%);
   padding: 180px 0 80px;
   text-align: center;
 
   @include mq(sp) {
-    padding: 40px 0 60px;
+    padding: 80px 0 25px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: bold;
+    color: $color-white;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+
+    @include mq(sp) {
+      font-size: 12px;
+    }
   }
 
   &__title {
@@ -26,22 +38,36 @@ background: linear-gradient(125deg, rgba(44, 188, 224, 0.8) 0%, rgba(240, 234, 1
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     font-size: 14px;
     color: $color-white;
-    
+
+    @include mq(sp) {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
 
     a {
-      color: inherit;
+      color: $color-white;
       text-decoration: none;
-          color: $color-white;
+      white-space: nowrap;
       &:hover {
         text-decoration: underline;
       }
     }
 
     span {
-            color: $color-white;
+      color: $color-white;
+      white-space: nowrap;
+      flex-shrink: 0;
       &::after {
         content: "/";
         margin-left: 10px;
@@ -51,24 +77,21 @@ background: linear-gradient(125deg, rgba(44, 188, 224, 0.8) 0%, rgba(240, 234, 1
       }
     }
   }
-
-
-
-
 }
 
-  .single{
-.c-page-header {
-padding-top: 120px;
-  padding-bottom: 40px;
-  &__breadcrumb{
-     display: flex;
-    justify-content: left;
-    align-items: left;
-    gap: 10px;
-    font-size: 14px;
-    color: $color-white;
-    
+.single {
+  .c-page-header {
+    padding-top: 120px;
+    padding-bottom: 40px;
+
+    @include mq(sp) {
+      padding-top: 80px;
+      padding-bottom: 25px;
+    }
+
+    &__breadcrumb {
+      justify-content: flex-start;
+      align-items: center;
+    }
   }
-  }
-  }
+}

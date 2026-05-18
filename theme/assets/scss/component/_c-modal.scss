@@ -109,6 +109,8 @@
 
     @include mq(sp) {
       font-size: 22px;
+      text-align: center;
+      flex-direction: column-reverse;
     }
   }
 
@@ -187,6 +189,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+    }
 
     .c-modal__btn-radio {
       flex: none;

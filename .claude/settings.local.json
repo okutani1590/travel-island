@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Figma__get_design_context",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(npm uninstall *)",
+      "Bash(docker compose *)",
+      "Bash(npx sass *)",
+      "Bash(node_modules/.bin/sass *)"
+    ]
+  }
+}

@@ -17,12 +17,10 @@ main {
   overflow: hidden;
 }
 
-
-
 .sec {
   padding: 100px 0;
   @media screen and (max-width: 768px) {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 }
 
@@ -30,6 +28,9 @@ main {
   font-size: 15px;
   margin-top: 10px;
   display: block;
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 }
 .attention::before {
   content: "※";

@@ -16,6 +16,11 @@
       flex-direction: column;
       gap: 40px;
     }
+
+    @include mq(sp) {
+      flex-direction: column;
+      gap: 30px;
+    }
   }
 
   &__main {
@@ -244,6 +249,8 @@
   border-top: 1px solid #eee;
 
   @include mq(sp) {
+    flex-wrap: wrap;
+    gap: 12px;
     margin-top: 50px;
     padding-top: 30px;
   }
@@ -263,9 +270,8 @@
     transition: all 0.3s;
 
     @include mq(sp) {
-      padding: 0 15px;
-      height: 40px;
-      font-size: 13px;
+      justify-content: center;
+      flex: 1;
     }
 
     &:hover {
@@ -278,9 +284,13 @@
       font-size: 20px;
     }
 
-    &--next::after {
-      content: "›";
-      font-size: 20px;
+    &--next {
+      margin-left: auto;
+
+      &::after {
+        content: "›";
+        font-size: 20px;
+      }
     }
 
     &--list {
@@ -290,6 +300,13 @@
       background-color: #eee;
       border-color: #eee;
       color: #333;
+
+      @include mq(sp) {
+        position: static;
+        transform: none;
+        order: -1;
+        flex: 0 0 100%;
+      }
 
       &:hover {
         background-color: #ddd;

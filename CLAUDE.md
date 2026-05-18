@@ -41,7 +41,6 @@ WordPress ブロックテーマ開発プロジェクトです。
 
 ## 開発環境
 
-- ローカル URL: http://localhost:8080
+- ローカル URL: http://localhost:8082
 - Docker Compose で管理
 - ビルド: cd wp-content/themes/my-theme && npm run dev
-

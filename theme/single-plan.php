@@ -6,12 +6,18 @@
     $level_terms = wp_get_post_terms( get_the_ID(), 'plan_level' );
     $level_term  = ! empty( $level_terms ) && ! is_wp_error( $level_terms ) ? $level_terms[0] : null;
     $level_label = $level_term ? $level_term->name : '自立';
+    $level_num   = $level_term ? (int) str_replace( 'level', '', $level_term->slug ) : 1;
     $season      = get_post_meta( get_the_ID(), 'plan_season', true );
     $style       = get_post_meta( get_the_ID(), 'plan_style', true );
     $area        = get_post_meta( get_the_ID(), 'plan_area', true );
     $point       = get_post_meta( get_the_ID(), 'plan_point', true );
     $price       = get_post_meta( get_the_ID(), 'plan_price', true );
     $tags        = wp_get_post_terms( get_the_ID(), 'plan_tag', [ 'fields' => 'names' ] );
+    $tag_icons   = [
+        '食事介助あり' => 'plan-tag-icon01.svg',
+        '入浴介助あり' => 'plan-tag-icon03.svg',
+        '移動時間短め' => 'plan-tag-icon02.svg',
+    ];
 ?>
 
 <main id="page" class="single">
@@ -39,17 +45,23 @@
                 <div class="p-plan-hero__content">
                     <h1 class="p-plan-hero__title"><?php the_title(); ?></h1>
                     <div class="p-plan-hero__badges">
-                        <p>対象介助レベル</p>
-                        <ul>
-                            <li>
-                                <span
-                                    class="p-plan-hero__badge p-plan-hero__badge--yellow"><?php echo esc_html( $level_label ); ?></span>
-                            </li>
-                        </ul>
+                        <div class="p-plan-hero__level">
+                            <p class="p-plan-hero__level-label">対象介助レベル</p>
+                            <span class="p-plan-hero__level-icons" role="img" aria-label="<?php echo esc_attr( $level_label ); ?>">
+                                <?php echo travel_island_get_level_icons( $level_num ); ?>
+                            </span>
+                        </div>
                         <?php if ( ! empty( $tags ) ) : ?>
                         <ul class="p-plan-hero__tags">
                             <?php foreach ( $tags as $tag ) : ?>
-                            <li>#<?php echo esc_html( $tag ); ?></li>
+                            <li class="p-plan-hero__tag">
+                                <span class="p-plan-hero__tag-icon" aria-hidden="true">
+                                    <?php if ( isset( $tag_icons[ $tag ] ) ) : ?>
+                                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/common/' . $tag_icons[ $tag ] ); ?>" alt="" width="30" height="30">
+                                    <?php endif; ?>
+                                </span>
+                                <span class="p-plan-hero__tag-label"><?php echo esc_html( $tag ); ?></span>
+                            </li>
                             <?php endforeach; ?>
                         </ul>
                         <?php endif; ?>

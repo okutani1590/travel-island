@@ -106,6 +106,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Swiper SP スライダー（CDN グローバル使用）
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".js-card-swiper").forEach((el) => {
+    new Swiper(el, {
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      slidesOffsetBefore: 20,
+      slidesOffsetAfter: 20,
+      pagination: {
+        el: el.querySelector(".swiper-pagination"),
+        type: "progressbar",
+      },
+      breakpoints: {
+        768: {
+          enabled: false,
+        },
+      },
+    });
+  });
+});
+
 // スムーススクロール
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('a[href*="#"]').forEach((anchor) => {
